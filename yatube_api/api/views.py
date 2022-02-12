@@ -6,8 +6,8 @@ from rest_framework import viewsets
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.response import Response
 
-from posts.models import Post,  Comment, Group, Follow, User
-from .serializers import PostSerializer,  CommentSerializer, \
+from posts.models import Post, Comment, Group, Follow
+from .serializers import PostSerializer,  CommentSerializer,\
     GroupSerializer, FollowSerializer
 from .mixins import CustomModel
 
