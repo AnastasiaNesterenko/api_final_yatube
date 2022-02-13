@@ -7,8 +7,8 @@ from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.response import Response
 
 from posts.models import Post, Comment, Group, Follow
-from .serializers import PostSerializer, CommentSerializer,\
-    GroupSerializer, FollowSerializer
+from .serializers import (PostSerializer, CommentSerializer,
+                          GroupSerializer, FollowSerializer)
 from .mixins import CustomModel
 
 
@@ -28,6 +28,12 @@ class GroupViewSet(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
+    def update(self, request, *args, **kwargs):
+        return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
+
+    def destroy(self, request, *args, **kwargs):
+        return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
+
 
 class CommentViewSet(CustomModel, viewsets.ModelViewSet):
     serializer_class = CommentSerializer
@@ -43,7 +49,6 @@ class CommentViewSet(CustomModel, viewsets.ModelViewSet):
 
 
 class FollowViewSet(viewsets.ModelViewSet):
-    queryset = Follow.objects.all()
     serializer_class = FollowSerializer
     filter_backends = (filters.SearchFilter,)
     search_fields = ('user__username', 'following__username')

@@ -13,7 +13,11 @@ router.register(
     CommentViewSet,
     basename='comments'
 )
-router.register(r'follow', FollowViewSet)
+router.register(
+    r'follow',
+    FollowViewSet,
+    basename='follow'
+)
 
 urlpatterns = [
     path('v1/', include('djoser.urls')),
