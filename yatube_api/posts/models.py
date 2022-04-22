@@ -1,3 +1,8 @@
+"""
+Приложение posts.
+В models.py описаны данные, которые хранятся в БД.
+Модель для группы, поста, комментария и подписки.
+"""
 from django.contrib.auth import get_user_model
 from django.db import models
 

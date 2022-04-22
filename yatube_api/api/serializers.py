@@ -1,3 +1,7 @@
+"""
+Приложение api.
+Сериализаторы для моделей поста, группы, комментария, подписки.
+"""
 from rest_framework import serializers
 from rest_framework.relations import SlugRelatedField
 from rest_framework.validators import UniqueTogetherValidator
@@ -6,6 +10,7 @@ from posts.models import Comment, Post, Group, Follow, User
 
 
 class PostSerializer(serializers.ModelSerializer):
+    """Сериализатор для поста."""
     author = SlugRelatedField(slug_field='username', read_only=True)
 
     class Meta:
@@ -14,6 +19,7 @@ class PostSerializer(serializers.ModelSerializer):
 
 
 class GroupSerializer(serializers.ModelSerializer):
+    """Сериализатор для группы."""
     class Meta:
         model = Group
         read_only_field = ('title', 'slug', 'description')
@@ -21,6 +27,7 @@ class GroupSerializer(serializers.ModelSerializer):
 
 
 class CommentSerializer(serializers.ModelSerializer):
+    """Сериализатор для комментария."""
     author = SlugRelatedField(read_only=True, slug_field='username')
 
     class Meta:
@@ -29,6 +36,7 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
 class FollowSerializer(serializers.ModelSerializer):
+    """Сериализатор для подписки."""
     user = SlugRelatedField(
         read_only=True,
         slug_field='username',

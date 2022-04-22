@@ -1,3 +1,7 @@
+"""
+Приложение api.
+Реализация самописных функций редактирования и удаление записей.
+"""
 from django.core.exceptions import PermissionDenied
 
 

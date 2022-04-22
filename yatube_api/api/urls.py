@@ -1,3 +1,7 @@
+"""
+Приложение api.
+Прописанны url-адреса для страниц, реализованных во views.py.
+"""
 from django.urls import include, path
 from rest_framework import routers
 

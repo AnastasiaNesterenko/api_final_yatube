@@ -1,3 +1,8 @@
+"""
+Приложение api.
+Реализованы функции создания поста, создания/редактирования/удаления
+группы, создания комментария, создания подписок.
+"""
 from django.shortcuts import get_object_or_404
 from rest_framework import filters
 from rest_framework import permissions
@@ -13,6 +18,7 @@ from .mixins import CustomModel
 
 
 class PostViewSet(CustomModel, viewsets.ModelViewSet,):
+    """Класс для создания поста."""
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     pagination_class = LimitOffsetPagination
@@ -22,6 +28,7 @@ class PostViewSet(CustomModel, viewsets.ModelViewSet,):
 
 
 class GroupViewSet(viewsets.ModelViewSet):
+    """Класс для создания/редактирования/удаления группы."""
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
 
@@ -36,6 +43,7 @@ class GroupViewSet(viewsets.ModelViewSet):
 
 
 class CommentViewSet(CustomModel, viewsets.ModelViewSet):
+    """Класс для создания комментария."""
     serializer_class = CommentSerializer
 
     def get_queryset(self):
@@ -49,6 +57,7 @@ class CommentViewSet(CustomModel, viewsets.ModelViewSet):
 
 
 class FollowViewSet(viewsets.ModelViewSet):
+    """Класс для создания подписки."""
     serializer_class = FollowSerializer
     filter_backends = (filters.SearchFilter,)
     search_fields = ('user__username', 'following__username')
